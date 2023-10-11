@@ -20,3 +20,19 @@ Route::get('/', function () {
 Route::get('/programing', function () {
     return ['C++', 'Java', 'Javascript', 'PHP'];
 });
+
+Route::get('/hello', function () {
+    return  response('<h1>Hello world</h1>', 200)
+    ->header('Content-Type', 'text/plain')
+    ->header('foo', 'bar');
+});
+
+Route::get('/post/{id}', function($id){
+    //ddd($id);
+    return response('Post' . $id);
+})->where('id', '[0-9]+');
+
+Route::get('/search', function(Request $request){
+    return $request->name . ' ' . $request->city;
+});
+
